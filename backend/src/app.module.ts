@@ -29,6 +29,9 @@ import { ReportesModule } from './reportes/reportes.module';
         username: configService.get<string>('DB_USERNAME'),
         password: configService.get<string>('DB_PASSWORD'),
         database: configService.get<string>('DB_NAME'),
+        ssl: configService.get<string>('DB_HOST')?.includes('render.com') 
+          ? { rejectUnauthorized: false } 
+          : false,
         entities: [__dirname + '/**/*.entity{.ts,.js}'],
         synchronize: true, // Enable to auto-create tables
       }),
