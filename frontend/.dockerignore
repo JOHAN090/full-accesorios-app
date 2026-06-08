@@ -6,4 +6,3 @@ build
 .gitignore
 .dockerignore
 Dockerfile
-nginx.conf
