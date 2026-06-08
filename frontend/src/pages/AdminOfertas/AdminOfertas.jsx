@@ -169,7 +169,7 @@ const AdminOfertas = () => {
             </thead>
             <tbody>
               {productos.map(producto => {
-                const API_BASE = 'http://localhost:3001';
+                const API_BASE = (process.env.REACT_APP_API_URL || 'http://localhost:3001/api').replace('/api', '');
                 const rawImage = producto.imagen_url || producto.imagen;
                 const imageUrl = rawImage 
                   ? (rawImage.startsWith('http') ? rawImage : `${API_BASE}${rawImage.startsWith('/') ? '' : '/'}${rawImage}`)

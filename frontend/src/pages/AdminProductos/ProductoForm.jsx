@@ -60,10 +60,11 @@ function ProductoForm() {
         stock: producto.stock || '',
       });
       if (producto.imagen_url) {
-        const imgUrl = producto.imagen_url.startsWith('http')
-          ? producto.imagen_url
-          : `http://localhost:3001${producto.imagen_url}`;
-        setImagePreview(imgUrl);
+        const API_BASE = (process.env.REACT_APP_API_URL || 'http://localhost:3001/api').replace('/api', '');
+        const currentImageUrl = producto.imagen_url.startsWith('http') 
+          ? producto.imagen_url 
+          : `${API_BASE}${producto.imagen_url.startsWith('/') ? '' : '/'}${producto.imagen_url}`;
+        setImagePreview(currentImageUrl);
       }
     } catch (error) {
       toast.error('Error al cargar el producto');

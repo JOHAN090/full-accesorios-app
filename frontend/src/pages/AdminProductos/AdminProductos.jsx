@@ -7,7 +7,7 @@ import { useAuth } from '../../context/AuthContext';
 import { toast } from 'react-toastify';
 import './AdminProductos.css';
 
-const API_BASE = 'http://localhost:3001';
+const API_BASE = (process.env.REACT_APP_API_URL || 'http://localhost:3001/api').replace('/api', '');
 
 function AdminProductos() {
   const [productos, setProductos] = useState([]);
