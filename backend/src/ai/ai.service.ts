@@ -43,7 +43,7 @@ REGLAS ESTRICTAS:
       `;
 
       // 3. Call Gemini API
-      const model = this.genAI.getGenerativeModel({ model: 'gemini-pro' });
+      const model = this.genAI.getGenerativeModel({ model: 'gemini-2.5-flash' });
       
       const chat = model.startChat({
         history: [
