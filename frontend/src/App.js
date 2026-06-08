@@ -23,6 +23,9 @@ import UsuarioForm from './pages/AdminUsuarios/UsuarioForm';
 import AdminOfertas from './pages/AdminOfertas/AdminOfertas';
 import AdminLogs from './pages/AdminLogs/AdminLogs';
 
+/* Components */
+import ChatWidget from './components/ChatWidget/ChatWidget';
+
 /* Layout & Route Protection */
 import Navbar from './components/Navbar/Navbar';
 import Footer from './components/Footer/Footer';
@@ -90,6 +93,7 @@ function App() {
             pauseOnHover
             theme="dark"
           />
+          <ChatWidget />
         </div>
       </Router>
     </AuthProvider>

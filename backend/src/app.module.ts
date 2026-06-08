@@ -13,6 +13,7 @@ import { ProductosModule } from './productos/productos.module';
 import { LogsAccesoModule } from './logs-acceso/logs-acceso.module';
 import { AuthModule } from './auth/auth.module';
 import { ReportesModule } from './reportes/reportes.module';
+import { AiModule } from './ai/ai.module';
 
 @Module({
   imports: [
@@ -49,6 +50,7 @@ import { ReportesModule } from './reportes/reportes.module';
     LogsAccesoModule,
     AuthModule,
     ReportesModule,
+    AiModule,
   ],
   controllers: [AppController],
   providers: [AppService],
