@@ -1,0 +1,57 @@
+version: '3.8'
+
+services:
+  db:
+    image: postgres:15-alpine
+    container_name: full_accesorios_db_local
+    environment:
+      POSTGRES_USER: root
+      POSTGRES_PASSWORD: rootpassword
+      POSTGRES_DB: full_accesorios_db
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    restart: unless-stopped
+
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: full_accesorios_backend
+    ports:
+      - "3001:3001"
+    environment:
+      - DB_HOST=db
+      - DB_PORT=5432
+      - DB_USERNAME=root
+      - DB_PASSWORD=rootpassword
+      - DB_NAME=full_accesorios_db
+      - JWT_SECRET=full_accesorios_jwt_secret_key_2024_ultra_secure
+      - JWT_EXPIRATION=8h
+      - PORT=3001
+      # Debes poner tu propia llave aquí si quieres probar la IA localmente,
+      # o crear un archivo .env en la misma ruta y usar env_file.
+      - GEMINI_API_KEY=${GEMINI_API_KEY:-TU_LLAVE_DE_GEMINI_AQUI}
+    volumes:
+      - backend_uploads:/usr/src/app/uploads
+    depends_on:
+      - db
+    restart: unless-stopped
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+      args:
+        - REACT_APP_API_URL=http://localhost:3001/api
+    container_name: full_accesorios_frontend
+    ports:
+      - "80:80"
+    depends_on:
+      - backend
+    restart: unless-stopped
+
+volumes:
+  pgdata:
+  backend_uploads:
