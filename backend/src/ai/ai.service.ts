@@ -64,7 +64,7 @@ REGLAS ESTRICTAS:
       return responseText;
     } catch (error) {
       console.error('Error generating AI response:', error);
-      throw new InternalServerErrorException('Error al contactar con el asistente de IA.');
+      throw new InternalServerErrorException('Error al contactar con el asistente de IA: ' + error.message);
     }
   }
 }
