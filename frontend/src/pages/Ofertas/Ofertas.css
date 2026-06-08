@@ -1,0 +1,84 @@
+.ofertas-page {
+  min-height: 60vh;
+}
+
+.ofertas-banner {
+  position: relative;
+  padding: 4rem 0;
+  overflow: hidden;
+  background: linear-gradient(135deg, #1a0533 0%, #2d1b69 50%, #7c3aed 100%);
+}
+
+.ofertas-banner-bg {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 80% 50%, rgba(192, 132, 252, 0.2) 0%, transparent 60%),
+              radial-gradient(circle at 20% 80%, rgba(239, 68, 68, 0.15) 0%, transparent 50%);
+  pointer-events: none;
+}
+
+.ofertas-banner-content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+}
+
+.ofertas-banner-emoji {
+  font-size: 3rem;
+  display: block;
+  margin-bottom: 1rem;
+  animation: bounce 1s ease-in-out infinite;
+}
+
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+.ofertas-banner-title {
+  font-size: 2.5rem;
+  font-weight: 900;
+  color: var(--text-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  margin-bottom: 0.75rem;
+}
+
+.ofertas-fire-icon {
+  color: #f97316;
+  filter: drop-shadow(0 0 8px rgba(249, 115, 22, 0.5));
+}
+
+.ofertas-banner-subtitle {
+  font-size: 1.1rem;
+  color: rgba(255, 255, 255, 0.75);
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.skeleton-card {
+  background: var(--bg-glass);
+  border: 1px solid var(--border-glass);
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+}
+
+@media (max-width: 640px) {
+  .ofertas-banner {
+    padding: 2.5rem 0;
+  }
+
+  .ofertas-banner-title {
+    font-size: 1.6rem;
+  }
+
+  .ofertas-banner-subtitle {
+    font-size: 0.95rem;
+  }
+
+  .ofertas-banner-emoji {
+    font-size: 2rem;
+  }
+}
