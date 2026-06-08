@@ -1,0 +1,38 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: full-accesorios-backend
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: full-accesorios-backend
+  template:
+    metadata:
+      labels:
+        app: full-accesorios-backend
+    spec:
+      containers:
+        - name: backend
+          image: proyecto_backend-backend:latest
+          imagePullPolicy: IfNotPresent
+          envFrom:
+            - configMapRef:
+                name: full-accesorios-config
+            - secretRef:
+                name: full-accesorios-secrets
+          ports:
+            - containerPort: 3001
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: full-accesorios-backend
+spec:
+  selector:
+    app: full-accesorios-backend
+  ports:
+    - protocol: TCP
+      port: 3001
+      targetPort: 3001

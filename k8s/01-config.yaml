@@ -1,0 +1,22 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: full-accesorios-config
+data:
+  DB_HOST: "full-accesorios-db"
+  DB_PORT: "5432"
+  DB_USERNAME: "root"
+  DB_NAME: "full_accesorios_db"
+  PORT: "3001"
+  JWT_EXPIRATION: "8h"
+
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: full-accesorios-secrets
+type: Opaque
+data:
+  DB_PASSWORD: cm9vdHBhc3N3b3Jk
+  JWT_SECRET: ZnVsbF9hY2Nlc29yaW9zX2p3dF9zZWNyZXRfa2V5XzIwMjRfdWx0cmFfc2VjdXJl
+  GEMINI_API_KEY: QVEuQWI4Uk42SlNMWTdnVFNnLUdtcVhKUWNmZlEzeW1ZUndBVGIyMjJZc2p5M0J1WjZmZWc=
